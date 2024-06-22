@@ -8,20 +8,16 @@ load_dotenv()
 def display_favorite_cities_table(df):
     st.write('### Favorite Cities Weather:')
     df['Temperature (c)'] = df['Temperature (c)'].astype(int)
-    df_display=df[['City', 'Country', 'Temperature (c)', 'Humidity', 'Conditions', 'Local Date', 'Local Time']]
-    df_display.index = [''] * len(df_display)
-    # Display dataframe with specified columns
-    st.dataframe(df_display)
+    df.set_index('City', inplace=True)
+    st.dataframe(df[['Country', 'Temperature (c)', 'Humidity', 'Conditions', 'Local Date', 'Local Time']])
 
 
 # Function to display weather data of newly added city
 def display_new_city_weather(new_city_df):
     st.write('### Newly Added City Weather Data:')
     new_city_df['Temperature (c)'] = new_city_df['Temperature (c)'].astype(int)
-    df_display= new_city_df[
-        ['City', 'Country', 'Temperature (c)', 'Humidity', 'Conditions', 'Local Date', 'Local Time']]
-    df_display.index = [''] * len(df_display)
-    st.dataframe(df_display.transpose())
+    new_city_df.set_index('City', inplace=True)
+    st.dataframe( new_city_df[[ 'Country', 'Temperature (c)', 'Humidity', 'Conditions', 'Local Date', 'Local Time']].transpose())
 
 def main():
     st.set_page_config(page_title="Weather Dashboard", layout="wide")
