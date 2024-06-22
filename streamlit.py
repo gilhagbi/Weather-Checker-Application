@@ -30,8 +30,8 @@ def main():
     default_cities_df = f.create_default_cities_df(api_key, default_cities_file)
 
     # Layout for the main page
-    st.markdown("##favorite Weather location")
-    st.write("add a city to the list.")
+    st.markdown("## My favorite Weather locations")
+#    st.write("add a city to the list.")
 
     col2, col1 = st.columns([1, 2])
 
@@ -45,7 +45,7 @@ def main():
         display_favorite_cities_table(default_cities_df)
 
     with col2:
-        st.markdown("## Add a New City")
+        st.markdown("## Add a city to the list")
         new_city_name = st.text_input('Enter new city name:')
         new_country_code = st.text_input('Enter new country code:')
         city_to_replace = st.text_input('Enter city to replace from your favorite list (or skip):')
