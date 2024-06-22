@@ -20,6 +20,7 @@ def display_new_city_weather(new_city_df):
 def main():
     st.set_page_config(page_title="Weather Dashboard", layout="wide")
     st.title('🌤️ Weather Dashboard')
+    st.markdown("# My favorite Weather locations")
 
     api_key = os.getenv('API_KEY')
     default_cities_file = os.getenv('DEFAULT_CITIES_FILE')
@@ -30,8 +31,6 @@ def main():
     default_cities_df = f.create_default_cities_df(api_key, default_cities_file)
 
     # Layout for the main page
-    st.markdown("## My favorite Weather locations")
-#    st.write("add a city to the list.")
 
     col2, col1 = st.columns([1, 2])
 
