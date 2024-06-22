@@ -6,16 +6,16 @@ load_dotenv()
 
 # Function to display favorite cities table
 def display_favorite_cities_table(df):
-    st.write('### Favorite Cities Weather:')
+    st.write('### Weather in My Favorite Cities')
     df['Temperature (c)'] = df['Temperature (c)'].astype(int)
-    st.table(df[['City', 'Country', 'Temperature (c)', 'Humidity', 'Conditions', 'Local Date', 'Local Time']])
+    st.dataframe(df[['City', 'Country', 'Temperature (c)', 'Humidity', 'Conditions', 'Local Date', 'Local Time']])
 
 
 # Function to display weather data of newly added city
 def display_new_city_weather(new_city_df):
     st.write('### Newly Added City Weather Data:')
     new_city_df['Temperature (c)'] = new_city_df['Temperature (c)'].astype(int)
-    st.table( new_city_df[[ 'City', 'Country', 'Temperature (c)', 'Humidity', 'Conditions', 'Local Date', 'Local Time']].transpose())
+    st.dataframe(new_city_df[['City', 'Country', 'Temperature (c)', 'Humidity', 'Conditions', 'Local Date', 'Local Time']].transpose())
 
 def main():
     st.set_page_config(page_title="Weather Dashboard", layout="wide")
@@ -30,8 +30,8 @@ def main():
     default_cities_df = f.create_default_cities_df(api_key, default_cities_file)
 
     # Layout for the main page
-    st.markdown("## Favorite Cities")
-    st.write("Refresh the table or add a new city to the list.")
+    st.markdown("##favorite Weather location")
+    st.write("add a city to the list.")
 
     col2, col1 = st.columns([1, 2])
 
